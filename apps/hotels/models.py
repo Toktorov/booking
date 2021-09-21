@@ -22,11 +22,24 @@ class Hotel(models.Model):
         verbose_name='Описание',
         blank=True, null=True
     )
-    
+
     price = models.DecimalField(
         default=0,
         max_digits=12,
         decimal_places=1
+    )
+
+    PAYMENT_CHOICES = (
+        ('USD', 'USD'),
+        ('EURO', 'EURO'),
+        ('KGZ', 'KGZ'),
+        ('RUB', 'RUB'),
+    )
+
+    payment = models.CharField(
+        choices=PAYMENT_CHOICES, max_length=255,
+        verbose_name='Оплата валюта:',
+        default = 'All payment'
     )
 
     WIFI_CHOICES = (
@@ -106,6 +119,9 @@ class Hotel(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+    def get_parent(self):
+        return self.comment.filter(parent__isnull=True)
 
 class HotelImage(models.Model):
     hotel = models.ForeignKey(

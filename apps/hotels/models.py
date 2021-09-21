@@ -18,12 +18,11 @@ class Hotel(models.Model):
         verbose_name='Название:'
     )
 
-    description = models.CharField(
-        max_length=200, 
-        blank=True,
-        verbose_name='Описание:'
+    description = models.TextField(
+        verbose_name='Описание',
+        blank=True, null=True
     )
-
+    
     price = models.DecimalField(
         default=0,
         max_digits=12,

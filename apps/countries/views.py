@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView
 # Create your views here.
 class CountriesIndexView(ListView):
     model = Country
-    template_name = 'countries/index.html'
+    template_name = 'index.html'
     context_object_name = 'countries'
 
 class CountriesDetailView(DetailView):

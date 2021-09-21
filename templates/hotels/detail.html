@@ -9,7 +9,9 @@
          <div class="col-lg-8 posts-list">
             <div class="single-post">
                <div class="feature-img">
+                  <div class="slider_active owl-carousel">
                   <img class="img-fluid" src="{{ image.image.url }}" alt="">
+                  </div>
                </div>
                <div class="blog_details">
                   <h2>Отель {{hotel.title}}
@@ -61,7 +63,7 @@
                </div>
             </div>
             <div class="comments-area">
-               <h4>{{ hotel.comment.all.count }} Comments</h4>
+               <h4>{{ hotel.comment.all.count }} отзыва</h4>
                {% for comment in hotel.get_parent %}
                <div class="comment-list">
                   <div class="single-comment justify-content-between d-flex">
@@ -106,16 +108,6 @@
                   <div class="form-group">
                      <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
                   </div>
-               </form>
-               <!-- <form method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="hidden" name="comment" value="{{ comment.id }}">
-                        <textarea style="margin-top: -3000px;" rows="4" cols="100" name="text" placeholder="Написать отзыв"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Написать отзыв'" required=""></textarea>
-                    </div>
-                    <button type="submit" class="b" style="margin-top: -1000px;">Отправить отзыв</button>
-                </form> -->
             </div>
          </div>
          <div class="col-lg-4">

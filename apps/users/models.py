@@ -14,7 +14,7 @@ class User(AbstractUser):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=255)
 
     def __str__(self):
-        return f"{self.username} -- {self.gender}"
+        return f"{self.username}{self.gender}"
 
     class Meta:
         verbose_name = 'Пользователи'

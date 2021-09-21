@@ -10,6 +10,15 @@ class CountriesIndexView(ListView):
     template_name = 'countries/index.html'
     context_object_name = 'countries'
 
+    def get_queryset(self):
+        queryset = Country.objects.all()
+        qury_obj = self.request.GET.get('words')
+        if qury_obj:
+            queryset = Country.objects.filter(
+                Q(title__icontains=qury_obj)
+            )
+        return queryset
+
 class CountriesDetailView(DetailView):
     model = Country
     template_name = 'countries/detail.html'

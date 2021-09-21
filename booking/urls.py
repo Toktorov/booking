@@ -1,5 +1,4 @@
 """booking URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
@@ -14,10 +13,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('apps.countries.urls')),
+    path('hotels/', include('apps.hotels.urls')),
+    path('orders/', include('apps.orders.urls')),
+    path('comments/', include('apps.comments.urls')),
+    path('favorites/', include('apps.favorites.urls')),
+    path('users/', include('apps.users.urls')),
+    path('users/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('payments/', include('payments.urls')),
+    path('payment/', include('apps.transactions.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

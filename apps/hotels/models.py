@@ -115,7 +115,7 @@ class Hotel(models.Model):
     class Meta:
         verbose_name = 'Отели'
         verbose_name_plural = 'Отели'
-        ordering = ('-id',)
+        ordering = ('-created',)
 
     def __str__(self):
         return f"{self.title}"

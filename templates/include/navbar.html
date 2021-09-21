@@ -21,8 +21,8 @@
                                         <li><a class="" href="travel_destination.html">Destination</a></l/li>
                                         <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                    <li><a href="destination_details.html">Destinations details</a></li>
-                                                    <li><a href="elements.html">elements</a></li>
+                                                <li><a href="destination_details.html">Destinations details</a></li>
+                                                <li><a href="elements.html">elements</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">blog <i class="ti-angle-down"></i></a>
@@ -43,7 +43,12 @@
                                 </div>
                                 <div class="main-menu d-none d-lg-block">
                                 </li>
+                                {% if user.is_authenticated %}
+                                <li><a href="{% url 'logout' %}">Выйти</a></li>
                                 <li><a href="contact.html">{{ user.username }}</a></li>
+                                {% else %}
+                                <li><a href="{% url 'login' %}">Вход</a></li>
+                                {% endif %}
                             </ul>
                                 </div>
                             </div>

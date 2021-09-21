@@ -20,8 +20,7 @@
                         {% endfor %}
                     </div>
                     <div class="content">
-                        <p class="d-flex align-items-center">{{hotel.title}}<a href="{% url 'hotel_detail' hotel.id %}">{{ country.hotel_country.all.count }} отзывов</a> </p>
-                        
+                        <p class="d-flex align-items-center">{{hotel.title}}<a href="{% url 'hotel_detail' hotel.id %}">{{ hotel.comment.all.count }} отзывов</a> </p>
                     </div>
                 </div>
             </div>

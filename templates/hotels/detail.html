@@ -4,108 +4,110 @@
 {% for image in hotel.hotel_image.all %}
 <!--================Blog Area =================-->
 <section class="blog_area single-post-area section-padding">
-    <div class="container">
-       <div class="row">
-          <div class="col-lg-8 posts-list">
-             <div class="single-post">
-                <div class="feature-img">
-                   <img class="img-fluid" src="{{ image.image.url }}" alt="">
-                </div>
-                <div class="blog_details">
-                   <h2>{{hotel.title}}
-                   </h2>
-                   <ul class="blog-info-link mt-3 mb-4">
-                      <li><a href="#"><i class="fa fa-user"></i>{{ hotel.user }}</a></li>
-                      <li><a href="#"><i class="fa fa-comments"></i>{{ hotel.comment.all.count }} Comments</a></li>
-                   </ul>
-                   <p class="excert">{{hotel.description}}</p> 
-                   <!-- Table -->
-                   <div class="section-top-border">
-                    <div class="progress-table-wrap">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 posts-list">
+            <div class="single-post">
+               <div class="feature-img">
+                  <img class="img-fluid" src="{{ image.image.url }}" alt="">
+               </div>
+               <div class="blog_details">
+                  <h2>Отель {{hotel.title}}
+                  </h2>
+                  <ul class="blog-info-link mt-3 mb-4">
+                     <li><a href="#"><i class="fa fa-user"></i>{{ hotel.user }}</a></li>
+                     <li><a href="#"><i class="fa fa-comments"></i>{{ hotel.comment.all.count }} отзывов</a></li>
+                  </ul>
+                  <p class="excert">{{hotel.description}}</p>
+                  <!-- Table -->
+                  <div class="section-top-border">
+                     <div class="progress-table-wrap">
                         <div class="progress-table">
-                            <div class="table-head">
-                                <div class="percentage">Оплата</div>
-                                <div class="visit">Wifi</div>
-                                <div class="visit">Бесплатная парковка</div>
-                                <div class="visit">Стойка регистрации</div>
-                                <div class="visit">Семейные номера</div>
-                                <div class="visit">Номера для некурящих</div>
-                            </div>
-                            <div class="table-row">
-                                <div class="percentage">{{hotel.price}} {{ hotel.payment}} за один день</div>
-                                <div class="visit">{{hotel.wifi}}</div>
-                                <div class="visit">{{hotel.parking}}</div>
-                                <div class="visit">{{hotel.front_desk}}</div>
-                                <div class="visit">{{hotel.family_rooms}}</div>
-                                <div class="visit">{{hotel.non_smoking_rooms}}</div>
-                            </div>
+                           <div class="table-head">
+                              <div class="percentage">Оплата</div>
+                              <div class="visit">Wifi</div>
+                              <div class="visit">Бесплатная парковка</div>
+                              <div class="visit">Стойка регистрации</div>
+                              <div class="visit">Семейные номера</div>
+                              <div class="visit">Номера для некурящих</div>
+                           </div>
+                           <div class="table-row">
+                              <div class="percentage">{{hotel.price}} {{ hotel.payment}} за один день</div>
+                              <div class="visit">{{hotel.wifi}}</div>
+                              <div class="visit">{{hotel.parking}}</div>
+                              <div class="visit">{{hotel.front_desk}}</div>
+                              <div class="visit">{{hotel.family_rooms}}</div>
+                              <div class="visit">{{hotel.non_smoking_rooms}}</div>
+                           </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-             </div>
-             <div class="navigation-top">
-                <div class="d-sm-flex justify-content-between text-center">
-                   <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>{{ hotel.likes_hotel.all.count }}
-                    человеку понравилось</p>
-                   <div class="col-sm-4 text-center my-2 my-sm-0">
-                      <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
-                   </div>
-                   <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                   </ul>
-                </div>
-             </div>
-             <div class="comments-area">
-                <h4>{{ hotel.comment.all.count }} Comments</h4>
-                {% for comment in hotel.get_parent %}
-                <div class="comment-list">
-                   <div class="single-comment justify-content-between d-flex">
-                      <div class="user justify-content-between d-flex">
-                         <div class="thumb">
-                            <img src="img/comment/comment_1.png" alt="">
-                         </div>
-                         <div class="desc">
-                            <p class="comment">
-                                {{ comment.text }}
-                            </p>
-                            <div class="d-flex justify-content-between">
-                               <div class="d-flex align-items-center">
-                                  <h5>
-                                     <a href="#">{{ comment.user }}</a>
-                                  </h5>
-                                  <p class="date">{{ comment.comment_created }}</p>
-                               </div>
-                               <div class="reply-btn">
-                                  <a href="#" class="btn-reply text-uppercase">reply</a>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-                {% endfor %}
-             </div>
-             <div class="comment-form">
-                <h4>Leave a Reply</h4>
-                <form method="post" class="form-contact comment_form" action="#" id="commentForm">
-                {% csrf_token %}
-                   <div class="row">
-                      <div class="col-12">
-                         <div class="form-group">
-                            <input type="hidden" name="comment" value="{{ comment.id }}">
-                            <textarea class="form-control w-100" rows="4" cols="100" name="text" placeholder="Написать отзыв"></textarea>
-                         </div>
-                      </div>
-                   </div>
-                   <div class="form-group">
-                      <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
-                   </div>
-                </form>
-                <!-- <form method="post">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="navigation-top">
+               <div class="d-sm-flex justify-content-between text-center">
+                  <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>
+                     {{ hotel.likes_hotel.all.count }}
+                     человеку понравилось</p>
+                  <div class="col-sm-4 text-center my-2 my-sm-0">
+                     <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                  </div>
+                  <ul class="social-icons">
+                     <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                     <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="comments-area">
+               <h4>{{ hotel.comment.all.count }} Comments</h4>
+               {% for comment in hotel.get_parent %}
+               <div class="comment-list">
+                  <div class="single-comment justify-content-between d-flex">
+                     <div class="user justify-content-between d-flex">
+                        <div class="thumb">
+                           <img src="img/comment/comment_1.png" alt="">
+                        </div>
+                        <div class="desc">
+                           <p class="comment">
+                              {{ comment.text }}
+                           </p>
+                           <div class="d-flex justify-content-between">
+                              <div class="d-flex align-items-center">
+                                 <h5>
+                                    <a href="#">{{ comment.user }}</a>
+                                 </h5>
+                                 <p class="date">{{ comment.comment_created }}</p>
+                              </div>
+                              <div class="reply-btn">
+                                 <a href="#" class="btn-reply text-uppercase">reply</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+            <div class="comment-form">
+               <h4>Leave a Reply</h4>
+               <form method="post" class="form-contact comment_form" action="#" id="commentForm">
+                  {% csrf_token %}
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="form-group">
+                           <input type="hidden" name="comment" value="{{ comment.id }}">
+                           <textarea class="form-control w-100" rows="4" cols="100" name="text"
+                              placeholder="Написать отзыв"></textarea>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                  </div>
+               </form>
+               <!-- <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <input type="hidden" name="comment" value="{{ comment.id }}">
@@ -114,185 +116,155 @@
                     </div>
                     <button type="submit" class="b" style="margin-top: -1000px;">Отправить отзыв</button>
                 </form> -->
-             </div>
-          </div>
-          <div class="col-lg-4">
-             <div class="blog_right_sidebar">
-                <aside class="single_sidebar_widget search_widget">
-                   <form action="#">
-                      <div class="form-group">
-                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder='Search Keyword'
-                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                            <div class="input-group-append">
-                               <button class="btn" type="button"><i class="ti-search"></i></button>
-                            </div>
-                         </div>
-                      </div>
-                      <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                         type="submit">Search</button>
-                   </form>
-                </aside>
-                <aside class="single_sidebar_widget post_category_widget">
-                   <h4 class="widget_title">Category</h4>
-                   <ul class="list cat-list">
-                      <li>
-                         <a href="#" class="d-flex">
-                            <p>Resaurant food</p>
-                            <p>(37)</p>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="d-flex">
-                            <p>Travel news</p>
-                            <p>(10)</p>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="d-flex">
-                            <p>Modern technology</p>
-                            <p>(03)</p>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="d-flex">
-                            <p>Product</p>
-                            <p>(11)</p>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="d-flex">
-                            <p>Inspiration</p>
-                            <p>(21)</p>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="d-flex">
-                            <p>Health Care</p>
-                            <p>(21)</p>
-                         </a>
-                      </li>
-                   </ul>
-                </aside>
-                <aside class="single_sidebar_widget popular_post_widget">
-                   <h3 class="widget_title">Recent Post</h3>
-                   <div class="media post_item">
-                      <img src="img/post/post_1.png" alt="post">
-                      <div class="media-body">
-                         <a href="single-blog.html">
-                            <h3>From life was you fish...</h3>
-                         </a>
-                         <p>January 12, 2019</p>
-                      </div>
-                   </div>
-                   <div class="media post_item">
-                      <img src="img/post/post_2.png" alt="post">
-                      <div class="media-body">
-                         <a href="single-blog.html">
-                            <h3>The Amazing Hubble</h3>
-                         </a>
-                         <p>02 Hours ago</p>
-                      </div>
-                   </div>
-                   <div class="media post_item">
-                      <img src="img/post/post_3.png" alt="post">
-                      <div class="media-body">
-                         <a href="single-blog.html">
-                            <h3>Astronomy Or Astrology</h3>
-                         </a>
-                         <p>03 Hours ago</p>
-                      </div>
-                   </div>
-                   <div class="media post_item">
-                      <img src="img/post/post_4.png" alt="post">
-                      <div class="media-body">
-                         <a href="single-blog.html">
-                            <h3>Asteroids telescope</h3>
-                         </a>
-                         <p>01 Hours ago</p>
-                      </div>
-                   </div>
-                </aside>
-                <aside class="single_sidebar_widget tag_cloud_widget">
-                   <h4 class="widget_title">Tag Clouds</h4>
-                   <ul class="list">
-                      <li>
-                         <a href="#">project</a>
-                      </li>
-                      <li>
-                         <a href="#">love</a>
-                      </li>
-                      <li>
-                         <a href="#">technology</a>
-                      </li>
-                      <li>
-                         <a href="#">travel</a>
-                      </li>
-                      <li>
-                         <a href="#">restaurant</a>
-                      </li>
-                      <li>
-                         <a href="#">life style</a>
-                      </li>
-                      <li>
-                         <a href="#">design</a>
-                      </li>
-                      <li>
-                         <a href="#">illustration</a>
-                      </li>
-                   </ul>
-                </aside>
-                <aside class="single_sidebar_widget instagram_feeds">
-                   <h4 class="widget_title">Instagram Feeds</h4>
-                   <ul class="instagram_row flex-wrap">
-                      <li>
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/post_5.png" alt="">
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/post_6.png" alt="">
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/post_7.png" alt="">
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/post_8.png" alt="">
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/post_9.png" alt="">
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/post_10.png" alt="">
-                         </a>
-                      </li>
-                   </ul>
-                </aside>
-                <aside class="single_sidebar_widget newsletter_widget">
-                   <h4 class="widget_title">Newsletter</h4>
-                   <form action="#">
-                      <div class="form-group">
-                         <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                      </div>
-                      <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                         type="submit">Subscribe</button>
-                   </form>
-                </aside>
-             </div>
-          </div>
-       </div>
-    </div>
- </section>
- <!--================ Blog Area end =================-->
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <div class="blog_right_sidebar">
+               <aside class="single_sidebar_widget search_widget">
+                  <form action="#">
+                     <div class="form-group">
+                        <div class="input-group mb-3">
+                           <input type="text" class="form-control" placeholder='Search Keyword'
+                              onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                           <div class="input-group-append">
+                              <button class="btn" type="button"><i class="ti-search"></i></button>
+                           </div>
+                        </div>
+                     </div>
+                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                        type="submit">Search</button>
+                  </form>
+               </aside>
+               <aside class="single_sidebar_widget post_category_widget">
+                  <h4 class="widget_title">Countries</h4>
+                  <ul class="list cat-list">
+                     <li>
+                        <a href="#" class="d-flex">
+                           <p>{Check</p>
+                           <p>(37)</p>
+                        </a>
+                     </li>
+                  </ul>
+               </aside>
+               <aside class="single_sidebar_widget popular_post_widget">
+                  <h3 class="widget_title">Recent Post</h3>
+                  <div class="media post_item">
+                     <img src="img/post/post_1.png" alt="post">
+                     <div class="media-body">
+                        <a href="single-blog.html">
+                           <h3>From life was you fish...</h3>
+                        </a>
+                        <p>January 12, 2019</p>
+                     </div>
+                  </div>
+                  <div class="media post_item">
+                     <img src="img/post/post_2.png" alt="post">
+                     <div class="media-body">
+                        <a href="single-blog.html">
+                           <h3>The Amazing Hubble</h3>
+                        </a>
+                        <p>02 Hours ago</p>
+                     </div>
+                  </div>
+                  <div class="media post_item">
+                     <img src="img/post/post_3.png" alt="post">
+                     <div class="media-body">
+                        <a href="single-blog.html">
+                           <h3>Astronomy Or Astrology</h3>
+                        </a>
+                        <p>03 Hours ago</p>
+                     </div>
+                  </div>
+                  <div class="media post_item">
+                     <img src="img/post/post_4.png" alt="post">
+                     <div class="media-body">
+                        <a href="single-blog.html">
+                           <h3>Asteroids telescope</h3>
+                        </a>
+                        <p>01 Hours ago</p>
+                     </div>
+                  </div>
+               </aside>
+               <aside class="single_sidebar_widget tag_cloud_widget">
+                  <h4 class="widget_title">Tag Clouds</h4>
+                  <ul class="list">
+                     <li>
+                        <a href="#">project</a>
+                     </li>
+                     <li>
+                        <a href="#">love</a>
+                     </li>
+                     <li>
+                        <a href="#">technology</a>
+                     </li>
+                     <li>
+                        <a href="#">travel</a>
+                     </li>
+                     <li>
+                        <a href="#">restaurant</a>
+                     </li>
+                     <li>
+                        <a href="#">life style</a>
+                     </li>
+                     <li>
+                        <a href="#">design</a>
+                     </li>
+                     <li>
+                        <a href="#">illustration</a>
+                     </li>
+                  </ul>
+               </aside>
+               <aside class="single_sidebar_widget instagram_feeds">
+                  <h4 class="widget_title">Instagram Feeds</h4>
+                  <ul class="instagram_row flex-wrap">
+                     <li>
+                        <a href="#">
+                           <img class="img-fluid" src="img/post/post_5.png" alt="">
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <img class="img-fluid" src="img/post/post_6.png" alt="">
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <img class="img-fluid" src="img/post/post_7.png" alt="">
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <img class="img-fluid" src="img/post/post_8.png" alt="">
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <img class="img-fluid" src="img/post/post_9.png" alt="">
+                        </a>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <img class="img-fluid" src="img/post/post_10.png" alt="">
+                        </a>
+                     </li>
+                  </ul>
+               </aside>
+               <aside class="single_sidebar_widget newsletter_widget">
+                  <h4 class="widget_title">Newsletter</h4>
+                  <form action="#">
+                     <div class="form-group">
+                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                           onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                     </div>
+                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                        type="submit">Subscribe</button>
+                  </form>
+               </aside>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--================ Blog Area end =================-->
 {% endfor %}
 {% endblock %}

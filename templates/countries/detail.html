@@ -46,10 +46,10 @@
                         {% for image in hotel.hotel_image.all %}
                         <img src="{{ image.image.url }}" alt="">
                         {% endfor %}
-                        <a href="{% url 'country_detail' country.slug %}" class="prise">{{hotel.price}} {{ hotel.payment }}</a>
+                        <a href="{% url 'hotel_detail' hotel.id %}" class="prise">{{hotel.price}} {{ hotel.payment }}</a>
                     </div>
                     <div class="place_info">
-                        <a href="{% url 'country_detail' country.slug %}"><h3>{{hotel.title}}</h3></a>
+                        <a href="{% url 'hotel_detail' hotel.id %}"><h3>{{hotel.title}}</h3></a>
                         <p>{{country.description|truncatewords:10 }}</p>
                         <div class="rating_days d-flex justify-content-between">
                             <span class="d-flex justify-content-center align-items-center">

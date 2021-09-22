@@ -31,7 +31,9 @@
                                                 <li><a href="single-blog.html">Одиночный блог</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Контакт</a></li>
+                                        {% if user.is_superuser %}
+                                        <li><a href="contact.html">Добавить страну</a></li>
+                                        {% endif %}
                                     </ul>
                                 </nav>
                             </div>

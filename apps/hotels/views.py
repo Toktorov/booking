@@ -16,6 +16,7 @@ class HotelsIndexView(ListView):
 
 def detail_hotel(request, pk):
     hotels = Hotel.objects.get(pk = pk)
+
     if 'like' in request.POST:
         try:
             like = Like.objects.get(user=request.user, hotels=hotels)

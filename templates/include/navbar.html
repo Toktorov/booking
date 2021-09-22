@@ -16,22 +16,22 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="{% url 'country_index' %}">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a class="" href="travel_destination.html">Destination</a></l/li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                        <li><a class="active" href="{% url 'country_index' %}">Домой</a></li>
+                                        <li><a href="about.html">О нас</a></li>
+                                        <li><a class="" href="travel_destination.html">Место назначения</a></l/li>
+                                        <li><a href="#">Страницы <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="destination_details.html">Destinations details</a></li>
-                                                <li><a href="elements.html">elements</a></li>
+                                                <li><a href="destination_details.html">Подробная информация о направлениях</a></li>
+                                                <li><a href="elements.html">Детали</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                        <li><a href="#">Блог <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
+                                                <li><a href="blog.html">Блог</a></li>
+                                                <li><a href="single-blog.html">Одиночный блог</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="contact.html">Контакт</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -44,8 +44,8 @@
                                 <div class="main-menu d-none d-lg-block">
                                 </li>
                                 {% if user.is_authenticated %}
-                                <li><a href="{% url 'logout' %}">Выйти</a></li>
                                 <li><a href="contact.html">{{ user.username }}</a></li>
+                                <li><a href="{% url 'logout' %}">Выйти</a></li>
                                 {% else %}
                                 <li><a href="{% url 'login' %}">Вход</a></li>
                                 <li><a href="{% url 'signup' %}">Регистрация</a></li>

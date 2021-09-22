@@ -2,8 +2,8 @@
 {% block title %} Sign up Page {% endblock %}
 
 {% block content %}
-
-    <h2>Sing up</h2>
+<div class="container">
+    <div class="row">
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
@@ -11,5 +11,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <h3>Есть аккаунт?</h3>
+</div>  
+</div>
 {% endblock %}

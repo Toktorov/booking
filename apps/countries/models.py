@@ -9,6 +9,11 @@ class Country(models.Model):
         verbose_name='Наименование'
     )
 
+    description = models.TextField(
+        verbose_name='Описание',
+        blank=True, null=True
+    )
+
     slug = models.SlugField(blank=True, unique=True)
 
     def __str__(self):

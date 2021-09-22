@@ -39,7 +39,7 @@ class Hotel(models.Model):
     payment = models.CharField(
         choices=PAYMENT_CHOICES, max_length=255,
         verbose_name='Оплата валюта:',
-        default = 'All payment'
+        default = 'USD'
     )
 
     WIFI_CHOICES = (
@@ -122,7 +122,7 @@ class Hotel(models.Model):
 
     def get_parent(self):
         return self.comment.filter(parent__isnull=True)
-
+        
 class HotelImage(models.Model):
     hotel = models.ForeignKey(
         Hotel,

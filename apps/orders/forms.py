@@ -12,5 +12,5 @@ class OrderForm(ModelForm):
             'name': forms.TextInput(attrs={'class': "form-control"}),
             'surname': forms.TextInput(attrs={'class': "form-control"}),
             'fatherland': forms.TextInput(attrs={'class': "form-control"}),
-            'id_card': forms.NumberInput(attrs={'class': 'form-control'}),
+            'id_card': forms.TextInput(attrs={'class': 'form-control'}),
         }

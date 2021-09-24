@@ -5,6 +5,7 @@ from django.forms import inlineformset_factory
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.urls import reverse
 
 # Create your views here.
 class OrderIndexView(generic.ListView):
@@ -22,6 +23,5 @@ class OrderCreateView(generic.CreateView):
     form_class = OrderForm
     template_name = 'order/create.html'
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
+    def get_success_url(self):
+        return reverse("country_index")

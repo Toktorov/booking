@@ -3,6 +3,7 @@ from apps.countries.models import Country
 from apps.countries.forms import CountryForm
 from django.forms import inlineformset_factory
 from django.views.generic import ListView, DetailView
+from django.db.models import Q
 
 # Create your views here.
 class CountriesIndexView(ListView):

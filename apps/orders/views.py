@@ -24,4 +24,7 @@ class OrderCreateView(generic.CreateView):
     template_name = 'order/create.html'
 
     def get_success_url(self):
-        return reverse("country_index")
+        return reverse("success_message")
+
+def successmessage(request):
+    return render(request, 'order/success.html')

@@ -14,6 +14,7 @@ class Order(models.Model):
     order = models.ForeignKey(Hotel, 
         on_delete=models.CASCADE, 
         related_name='order',
+        null = True,
         blank=True
     )
 

@@ -8,11 +8,13 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 
+
 # Create your views here.
 class HotelsIndexView(ListView):
     model = Hotel
     template_name = 'hotels/index.html'
     context_object_name = 'hotels'
+
 
 def detail_hotel(request, pk):
     hotels = Hotel.objects.get(pk = pk)
@@ -32,6 +34,7 @@ def detail_hotel(request, pk):
         except:
             print("Error")
     return render(request, 'hotels/detail.html', {"hotel": hotels})
+
 
 class HotelCreateView(CreateView):
     model = Hotel

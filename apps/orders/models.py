@@ -8,7 +8,7 @@ User = get_user_model()
 class Order(models.Model):
     user = models.ForeignKey(User, 
         on_delete=models.CASCADE, 
-        blank = True,
+         blank = True,
         null = True
     )
 

@@ -11,8 +11,8 @@ class OrderForm(ModelForm):
         model = Order 
         fields = ('arrival_date', 'departure_date', 'name', 'surname', 'fatherland', 'id_card')
         widgets = {
-            'arrival_date': DateInput(),
-            'departure_date': DateInput(),
+            'arrival_date': DateInput(attrs={'class': "form-control"}, ),
+            'departure_date': DateInput(attrs={'class': "form-control"}),
             'name': forms.TextInput(attrs={'class': "form-control"}),
             'surname': forms.TextInput(attrs={'class': "form-control"}),
             'fatherland': forms.TextInput(attrs={'class': "form-control"}),

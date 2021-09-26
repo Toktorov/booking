@@ -18,21 +18,21 @@
                                     <ul id="navigation">
                                         <li><a class="active" href="{% url 'country_index' %}">Домой</a></li>
                                         <li><a href="about.html">О нас</a></li>
-                                        <li><a class="" href="travel_destination.html">Место назначения</a></l/li>
+                                        <li><a class="" href="travel_destination.html">Карта</a></l/li>
                                         <li><a href="#">Страницы <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="destination_details.html">Подробная информация о направлениях</a></li>
                                                 <li><a href="elements.html">Детали</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Блог <i class="ti-angle-down"></i></a>
+                                        {% if user.is_superuser %}
+                                        <li><a href="#">Админ панель<i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">Блог</a></li>
-                                                <li><a href="single-blog.html">Одиночный блог</a></li>
+                                                <li><a href="{% url 'country_create' %}">Добавить страну</a></li>
+                                                <li><a href="single-blog.html">Добавить отель</a></li>
+                                                <li><a href="{% url 'admin:index' %}">Перейти в админку</a></li>
                                             </ul>
                                         </li>
-                                        {% if user.is_superuser %}
-                                        <li><a href="contact.html">Добавить страну</a></li>
                                         {% endif %}
                                     </ul>
                                 </nav>

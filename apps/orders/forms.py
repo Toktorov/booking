@@ -9,7 +9,7 @@ class DateInput(forms.DateInput):
 class OrderForm(ModelForm):
     class Meta:
         model = Order 
-        fields = ('arrival_date', 'departure_date', 'name', 'surname', 'fatherland', 'id_card')
+        fields = ['arrival_date', 'departure_date', 'name', 'surname', 'fatherland', 'id_card']
         widgets = {
             'arrival_date': DateInput(attrs={'class': "form-control"}, ),
             'departure_date': DateInput(attrs={'class': "form-control"}),

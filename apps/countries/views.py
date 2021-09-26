@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from apps.countries.models import Country
-from apps.countries.forms import CountryForm
+from apps.countries.models import Country, CountryImage
+from apps.countries.forms import CountryForm, CountryImageForm
 from django.forms import inlineformset_factory
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
+from django.views import generic
+from django.urls import reverse_lazy
 
 # Create your views here.
 class CountriesIndexView(ListView):
@@ -24,3 +26,13 @@ class CountriesDetailView(DetailView):
     model = Country
     template_name = 'countries/detail.html'
     context_object_name = 'country'
+
+class CountriesCreateView(generic.CreateView):
+    model = Country
+    form_class = CountryForm
+    success_url = reverse_lazy('country_index')
+    template_name = 'countries/create.html'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

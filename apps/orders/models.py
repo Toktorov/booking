@@ -7,16 +7,12 @@ User = get_user_model()
 # Create your models here.
 class Order(models.Model):
     user = models.ForeignKey(User, 
-        on_delete=models.CASCADE, 
-         blank = True,
-        null = True
+        on_delete=models.CASCADE
     )
 
     order = models.ForeignKey(Hotel, 
         on_delete=models.CASCADE, 
-        related_name='order',
-        blank = True,
-        null = True
+        related_name='order'
     )
 
     create_at = models.DateTimeField(

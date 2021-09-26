@@ -6,4 +6,5 @@ urlpatterns = [
    path('', views.HotelsIndexView.as_view(), name='hotel_index'),
    path('hotel/<int:pk>/', views.detail_hotel, name='hotel_detail'),
    path('create/', views.HotelCreateView.as_view(), name='hotel_create'),
+   path('map/', views.map, name='map'),
 ]

@@ -41,3 +41,6 @@ class HotelCreateView(CreateView):
     fields = ['title', 'description', 'price', 'countries', 'wifi', 'parking']
     success_url = reverse_lazy('hotel_index')
     template_name = 'hotels/create.html'
+
+def map(request):
+    return render(request, 'map.html')

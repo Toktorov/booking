@@ -9,8 +9,8 @@ class User(AbstractUser):
     )
     username = models.CharField(max_length=255, unique=True)
     profile = models.ImageField(upload_to='profiles', blank=True, null=True)
-    bio = models.CharField(max_length=255, blank=True, null=True)
     age = models.PositiveIntegerField(default=0)
+    phone_number = models.CharField(max_length = 100, blank=True, null=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=255)
 
     def __str__(self):

@@ -7,13 +7,13 @@ class UserCreateForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = (
-            'username', 'profile', 'bio', 'age',
+            'username', 'profile', 'phone_number', 'age',
             'gender',
         )
         widgets = {
             'username': forms.TextInput(attrs={'class': "form-control"}),
             'profile': forms.FileInput(attrs={'class': "form-control"}),
-            'bio': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
             'age': forms.NumberInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
         }

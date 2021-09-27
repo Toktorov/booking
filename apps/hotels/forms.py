@@ -16,7 +16,7 @@ class HotelForm(ModelForm):
         model = Hotel
         exclude = []
         fields = ['title', 'description', 'price', 'payment', 'wifi', 'parking', 'front_desk', 
-        'family_rooms', 'non_smoking_rooms', 'contact_number', 'countries']
+        'family_rooms', 'non_smoking_rooms', 'contact_number', 'tags', 'countries']
         widgets = {
             'title': forms.TextInput(attrs={'class': "form-control"}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
@@ -28,6 +28,7 @@ class HotelForm(ModelForm):
             'family_rooms': forms.Select(attrs={'class': "form-control"}),
             'non_smoking_rooms': forms.Select(attrs={'class': "form-control"}),
             'contact_number': forms.TextInput(attrs={'class': "form-control"}),
+            'tags': forms.Select(attrs={'class': "form-control"}),
             'countries': forms.Select(attrs={'class': 'form-control'}),
         }
         HotelImageFormSet = inlineformset_factory(Hotel, HotelImage,

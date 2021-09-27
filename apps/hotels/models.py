@@ -1,6 +1,7 @@
 from django.db import models
 from apps.countries.models import Country
 from django.contrib.auth import get_user_model
+from apps.tags.models import Tag
 
 User = get_user_model()
 
@@ -101,6 +102,8 @@ class Hotel(models.Model):
         max_length = 50, 
         verbose_name = "Контактный номер",
     )
+
+    tags = models.ManyToManyField(Tag, related_name='hotel_tags')
 
     created = models.DateTimeField(
         auto_now_add=True

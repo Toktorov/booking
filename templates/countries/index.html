@@ -60,8 +60,9 @@
                                 <a href="#">(20 Review)</a>
                             </span>
                             <div class="days">
-                                <i class="fa fa-clock-o"></i>
-                                <a href="#">5 Days</a>
+                                {% if user.is_superuser %}
+                                <a href="{% url 'country_delete' country.slug %}">Удалить</a>
+                                {% endif %}  
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,7 @@
 {% extends 'authorization_index.html' %}
 {% block content %}
+{% if user.is_authenticated %}
+{% if user.is_superuser %}
 <div class="container">
     <div class="desc">
         <form method="post" enctype="multipart/form-data">
@@ -38,4 +40,6 @@
         </form>
     </div>
 </div>
+{% endif %}
+{% endif %}
 {% endblock %}

@@ -6,6 +6,7 @@ from apps.comments.forms import CommentForm
 from django.forms import inlineformset_factory
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
+from django.views import generic
 
 
 # Create your views here.
@@ -43,6 +44,17 @@ class HotelCreateView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(HotelCreateView, self).form_valid(form)
+
+class HotelUpdateView(generic.UpdateView):
+    model = Hotel
+    form_class = HotelForm
+    success_url = reverse_lazy('country_index')
+    template_name = 'hotels/update.html'
+
+class HotelDeleteView(generic.DeleteView):
+    model = Hotel
+    success_url = reverse_lazy('country_index')
+    template_name = 'hotels/delete.html'
 
 
 def map(request):

@@ -17,19 +17,13 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="{% url 'country_index' %}">Домой</a></li>
-                                        <li><a href="about.html">О нас</a></li>
+                                        <li><a href="{% url 'about_us' %}">О нас</a></li>
                                         <li><a class="" href="{% url 'map' %}">Карта</a></l/li>
-                                        <li><a href="#">Страницы <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="destination_details.html">Подробная информация о направлениях</a></li>
-                                                <li><a href="elements.html">Детали</a></li>
-                                            </ul>
-                                        </li>
                                         {% if user.is_superuser %}
                                         <li><a href="#">Админ панель<i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="{% url 'country_create' %}">Добавить страну</a></li>
-                                                <li><a href="single-blog.html">Добавить отель</a></li>
+                                                <li><a href="{% url 'hotel_create' %}">Добавить отель</a></li>
                                                 <li><a href="{% url 'admin:index' %}">Перейти в админку</a></li>
                                             </ul>
                                         </li>
@@ -55,14 +49,6 @@
                             </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="seach_icon">
-                            <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
-                                <i class="fa fa-search"></i>
-                            </a>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,10 @@
+{% extends 'authorization_index.html' %}
+{% block content %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <h1>Are you sure delete this category <span class="badge bg-secondary">{{ category.title }}</span></h1>
+            <button type="submit" class="btn btn-success mt-3">Delete</button>
+        </form>
+    </div>
+{% endblock %}

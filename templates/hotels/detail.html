@@ -46,9 +46,15 @@
                   </div>
                </div>
             </div>
+            {% if user.is_authenticated %}
             <div class="more_place_btn text-center">
                <a class="boxed-btn4" href="{% url 'order_create' %}">Бронировать</a>
             </div>
+            {% else %}
+            <div class = "row">
+               <h4>Зарегистрируйтесь или войдите чтобы забронировать отель</h4>
+            </div>
+            {% endif %}
             <div class="navigation-top">
                <div class="d-sm-flex justify-content-between text-center">
                   <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>
@@ -95,6 +101,7 @@
                </div>
                {% endfor %}
             </div>
+            {% if user.is_authenticated %}
             <div class="comment-form">
                <h4>Leave a Reply</h4>
                <form method="post" class="form-contact comment_form" action="#" id="commentForm">
@@ -111,25 +118,16 @@
                   <div class="form-group">
                      <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
                   </div>
+               </form>
             </div>
+            {% else %}
+            <div class = "row">
+               <h4>Зарегистрируйтесь или войдите чтобы оставлять коментарий</h4>
+            </div>
+            {% endif %}
          </div>
          <div class="col-lg-4">
             <div class="blog_right_sidebar">
-               <aside class="single_sidebar_widget search_widget">
-                  <form action="#">
-                     <div class="form-group">
-                        <div class="input-group mb-3">
-                           <input type="text" class="form-control" placeholder='Search Keyword'
-                              onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                           <div class="input-group-append">
-                              <button class="btn" type="button"><i class="ti-search"></i></button>
-                           </div>
-                        </div>
-                     </div>
-                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                        type="submit">Search</button>
-                  </form>
-               </aside>
                <aside class="single_sidebar_widget post_category_widget">
                   <h4 class="widget_title">Countries</h4>
                   <ul class="list cat-list">
@@ -206,41 +204,6 @@
                      </li>
                      <li>
                         <a href="#">illustration</a>
-                     </li>
-                  </ul>
-               </aside>
-               <aside class="single_sidebar_widget instagram_feeds">
-                  <h4 class="widget_title">Instagram Feeds</h4>
-                  <ul class="instagram_row flex-wrap">
-                     <li>
-                        <a href="#">
-                           <img class="img-fluid" src="img/post/post_5.png" alt="">
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#">
-                           <img class="img-fluid" src="img/post/post_6.png" alt="">
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#">
-                           <img class="img-fluid" src="img/post/post_7.png" alt="">
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#">
-                           <img class="img-fluid" src="img/post/post_8.png" alt="">
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#">
-                           <img class="img-fluid" src="img/post/post_9.png" alt="">
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#">
-                           <img class="img-fluid" src="img/post/post_10.png" alt="">
-                        </a>
                      </li>
                   </ul>
                </aside>

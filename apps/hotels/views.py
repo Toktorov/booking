@@ -6,7 +6,6 @@ from apps.comments.forms import CommentForm
 from django.forms import inlineformset_factory
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -35,12 +34,19 @@ def detail_hotel(request, pk):
             print("Error")
     return render(request, 'hotels/detail.html', {"hotel": hotels})
 
-
 class HotelCreateView(CreateView):
     model = Hotel
-    fields = ['title', 'description', 'price', 'countries', 'wifi', 'parking']
-    success_url = reverse_lazy('hotel_index')
+    form_class = HotelForm
+    success_url = reverse_lazy('country_index')
     template_name = 'hotels/create.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(HotelCreateView, self).form_valid(form)
+
 
 def map(request):
     return render(request, 'map.html')
+
+def about_us(request):
+    return render(request, 'about_us.html')

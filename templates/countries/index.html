@@ -1,6 +1,29 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
+<div class="where_togo_area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <div class="form_area">
+                    <h3>Куда вы бы хотели поехать?</h3>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="search_wrap">
+                    <form class="search_form" action="#">
+                        <div class="input_field">
+                            <input type="search" name="words" placeholder="В какую страну?">
+                        </div>
+                        <div class="input_field">
+                            <button class="boxed-btn4" name="key_word" type="submit" >Искать</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
 <div class="popular_places_area">
     <div class="container">
         <div class="row justify-content-center">
@@ -49,7 +72,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="more_place_btn text-center">
-                    <a class="boxed-btn4" href="#">Больше мест</a>
+                    <a class="boxed-btn4" href="{% url 'country_index' %}">Больше мест</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,10 @@
+{% extends 'authorization_index.html' %}
+{% block content %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-success mt-3">Update</button>
+        </form>
+    </div>
+{% endblock %}

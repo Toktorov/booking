@@ -36,3 +36,14 @@ class CountriesCreateView(generic.CreateView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+class CountriesUpdateView(generic.UpdateView):
+    model = Country
+    form_class = CountryForm
+    success_url = reverse_lazy('country_index')
+    template_name = 'countries/update.html'
+
+class CountriesDeleteView(generic.DeleteView):
+    model = Country
+    success_url = reverse_lazy('country_index')
+    template_name = 'countries/delete.html'

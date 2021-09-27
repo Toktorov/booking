@@ -6,4 +6,6 @@ urlpatterns = [
    path('', views.CountriesIndexView.as_view(), name='country_index'),
    path('country/<str:slug>/', views.CountriesDetailView.as_view(), name='country_detail'),
    path('create/', views.CountriesCreateView.as_view(), name='country_create'),
+   path('update/<str:slug>/', views.CountriesUpdateView.as_view(), name='country_update'),
+   path('delete/<str:slug>/', views.CountriesDeleteView.as_view(), name='country_delete'),
 ]

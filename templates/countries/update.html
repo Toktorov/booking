@@ -1,5 +1,6 @@
 {% extends 'base_index.html' %}
 {% block content %}
+{% if user.is_superuser %}
     <div class="container">
         <form method="post">
             {% csrf_token %}
@@ -7,4 +8,11 @@
             <button type="submit" class="btn btn-success mt-3">Update</button>
         </form>
     </div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <h3>У вас не прав на это</h3>
+    </div>
+</div>
+{% endif %}
 {% endblock %}

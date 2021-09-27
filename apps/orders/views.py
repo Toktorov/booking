@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from apps.orders.models import Order
-from apps.orders.forms import OrderForm
+from apps.orders.forms import OrderForm, OrderAdminForm
 from django.views import generic
 from django.urls import reverse_lazy
 from apps.hotels.models import Hotel
@@ -28,7 +28,7 @@ class OrderCreateView(generic.CreateView):
 
 class OrderUpdateView(generic.UpdateView):
     model = Order
-    form_class = OrderForm
+    form_class = OrderAdminForm
     success_url = reverse_lazy('order_index')
     template_name = 'order/update.html'
 

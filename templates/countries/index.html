@@ -16,7 +16,7 @@
                             <input type="search" name="words" placeholder="В какую страну?">
                         </div>
                         <div class="input_field">
-                            <button class="boxed-btn4" name="key_word" type="submit" >Искать</button>
+                            <button class="boxed-btn4" name="key_word" type="submit" style = "margin-left: -370px;">Искать</button>
                         </div>
                     </form>
                 </div>
@@ -51,17 +51,10 @@
                         </a>
                         <p>{{country.description|truncatewords:10 }}</p>
                         <div class="rating_days d-flex justify-content-between">
-                            <span class="d-flex justify-content-center align-items-center">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <a href="#">(20 Review)</a>
-                            </span>
-                            <div class="days">
+                            <div>
                                 {% if user.is_superuser %}
-                                <a href="{% url 'country_delete' country.slug %}">Удалить</a>
+                                <a class="genric-btn info-border radius" href="{% url 'country_update' country.slug %}">Обновить</a>
+                                <a class="genric-btn info-border radius" href="{% url 'country_delete' country.slug %}">Удалить</a>
                                 {% endif %}  
                             </div>
                         </div>
@@ -75,19 +68,6 @@
                 <div class="more_place_btn text-center">
                     <a class="boxed-btn4" href="{% url 'country_index' %}">Больше мест</a>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="serch_form">
-                <form class="d-flex">
-                    <input type="search" name="words" placeholder="Search">
-                    <button name="key_word" type="submit">search</button>
-                </form>
             </div>
         </div>
     </div>

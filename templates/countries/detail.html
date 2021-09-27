@@ -34,8 +34,14 @@
                             </span>
                             <div class="days">
                                 <i class="fa fa-clock-o"></i>
-                                <a href="#">5 Days</a>
+                                <a href="#">{{ hotel.created|truncatewords:1  }}</a>
                             </div>
+                        </div>
+                        <div>
+                            {% if user.is_superuser %}
+                            <a class="genric-btn info-border radius" href="{% url 'hotel_update' hotel.pk %}" style = "margin-top: 10px;">Обновить</a>
+                            <a class="genric-btn info-border radius" href="{% url 'hotel_delete' hotel.pk %}" style = "margin-top: 10px;">Удалить</a>
+                            {% endif %}  
                         </div>
                     </div>
                 </div>
@@ -47,19 +53,6 @@
                 <div class="more_place_btn text-center">
                     <a class="boxed-btn4" href="#">Больше мест</a>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="serch_form">
-                <form class="d-flex">
-                    <input type="search" name="words" placeholder="Search">
-                    <button name="key_word" type="submit">search</button>
-                </form>
             </div>
         </div>
     </div>

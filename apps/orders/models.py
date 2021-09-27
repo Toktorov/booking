@@ -48,6 +48,12 @@ class Order(models.Model):
         verbose_name='Паспорт:',
     )
 
+    contact_number = models.CharField(
+        max_length = 50, 
+        verbose_name = "Контактный номер",
+        default = ""
+    )
+
     STATUS_CHOICES = (
         ('в обработке', 'в обработке'),
         ('принят', 'принят'),

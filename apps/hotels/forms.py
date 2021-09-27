@@ -15,8 +15,8 @@ class HotelImageForm(forms.ModelForm):
 class HotelForm(ModelForm):
     class Meta:
         model = Hotel
-        exclude = []
-        inlines = [HotelImageForm]
+        exclude = ['image']
+        HotelImageFormSet = inlineformset_factory(Hotel, HotelImage, form=HotelImageForm, extra=1)
         fields = ['title', 'description', 'price', 'payment', 'wifi', 'parking', 'front_desk', 
         'family_rooms', 'non_smoking_rooms', 'contact_number', 'tags', 'countries']
         widgets = {

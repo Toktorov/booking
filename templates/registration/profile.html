@@ -6,23 +6,26 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_place">
                     <div class="place_info">
+                        <div class="thumb">
+                            <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
+                            <a href="" class="prise">{{ user.socialaccount_set.all.0.extra_data.name }}</a>
+                        </div>
                         <a href="">
-                            <h3>{{ order.order }}</h3>
+                            <h3>{{ user.socialaccount_set.all.0.extra_data.name }}</h3>
+                            <h3>{{ user.username }}</h3>
                         </a>
-                        <p>Имя: {{ order.name }}</p>
-                        <p>Фамилия: {{ order.surname }}</p>
-                        <p>Отчество: {{ order.fatherland }}</p>
-                        <p>Дата прибытия: {{ order.arrival_date }}</p>
-                        <p>Дата отбытия: {{ order.departure_date }}</p>
-                        <p>ID паспорт: {{ order.id_card }}</p>
-                        <p>Статус: {{ order.status }}</p>
+                        <p>Пол: {{ user.gender }}</p>
+                        <p>Возраст: {{ user.age }}</p>
+                        {% if user.is_superuser %}
+                        <p>Номер: {{ user.phone_number }}</p>
+                        {% endif %}
                         <div class="rating_days d-flex justify-content-between">
                             <div>
                                 {% if user.is_superuser %}
                                 <a class="genric-btn info-border radius"
-                                    href="{% url 'order_update' order.pk%}">Обновить</a>
+                                    href="">Обновить</a>
                                 <a class="genric-btn info-border radius"
-                                    href="{% url 'order_delete' order.pk%}">Удалить</a>
+                                    href="">Удалить</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -32,4 +35,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

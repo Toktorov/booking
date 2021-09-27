@@ -9,7 +9,7 @@ class DateInput(forms.DateInput):
 class OrderForm(ModelForm):
     class Meta:
         model = Order 
-        fields = ['arrival_date', 'departure_date', 'name', 'surname', 'fatherland', 'id_card']
+        fields = ['arrival_date', 'departure_date', 'name', 'surname', 'fatherland', 'id_card', 'contact_number']
         widgets = {
             'arrival_date': DateInput(attrs={'class': "form-control"}, ),
             'departure_date': DateInput(attrs={'class': "form-control"}),
@@ -17,12 +17,13 @@ class OrderForm(ModelForm):
             'surname': forms.TextInput(attrs={'class': "form-control"}),
             'fatherland': forms.TextInput(attrs={'class': "form-control"}),
             'id_card': forms.TextInput(attrs={'class': 'form-control'}),
+            'contact_number': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class OrderAdminForm(ModelForm):
     class Meta:
         model = Order 
-        fields = ['arrival_date', 'departure_date', 'name', 'surname', 'fatherland', 'id_card', 'status']
+        fields = ['arrival_date', 'departure_date', 'name', 'surname', 'fatherland', 'id_card', 'contact_number', 'status']
         widgets = {
             'arrival_date': DateInput(attrs={'class': "form-control"}, ),
             'departure_date': DateInput(attrs={'class': "form-control"}),
@@ -30,5 +31,6 @@ class OrderAdminForm(ModelForm):
             'surname': forms.TextInput(attrs={'class': "form-control"}),
             'fatherland': forms.TextInput(attrs={'class': "form-control"}),
             'id_card': forms.TextInput(attrs={'class': 'form-control'}),
+            'contact_number': forms.TextInput(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
         }

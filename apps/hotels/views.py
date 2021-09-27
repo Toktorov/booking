@@ -47,7 +47,7 @@ class HotelCreateView(CreateView):
 
 class HotelUpdateView(generic.UpdateView):
     model = Hotel
-    form_class = [HotelForm, HotelImageForm]
+    form_class = HotelForm
     success_url = reverse_lazy('country_index')
     template_name = 'hotels/update.html'
 

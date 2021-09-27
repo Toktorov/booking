@@ -52,16 +52,18 @@
             </div>
             {% else %}
             <div class = "row">
-               <h4>Зарегистрируйтесь или войдите чтобы забронировать отель</h4>
+               <h4>Зарегистрируйтесь или войдите чтобы забронировать отель и ставить лайки</h4>
             </div>
             {% endif %}
             <div class="navigation-top">
                <div class = "container">
+                  {% if user.is_authenticated %}
                   <form method="post">
                      {% csrf_token %}
                      <input type="hidden" name="like">
                      <button type="submit" class="genric-btn info-border radius" style = "margin-top: 10px">Понравилось</button>
                  </form>
+                 {% endif %}
                </div>
                <div class="d-sm-flex justify-content-between text-center">
                   <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>

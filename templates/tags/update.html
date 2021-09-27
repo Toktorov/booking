@@ -1,0 +1,18 @@
+{% extends 'base_index.html' %}
+{% block content %}
+{% if user.is_superuser %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="genric-btn info-border radius" style = "margin-top: 10px;">Update</button>
+        </form>
+    </div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <h3>У вас не прав на это</h3>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

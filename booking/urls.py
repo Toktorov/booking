@@ -31,6 +31,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('payments/', include('payments.urls')),
     path('payment/', include('apps.transactions.urls')),
+    path('tags/', include('apps.tags.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

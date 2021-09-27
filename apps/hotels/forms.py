@@ -6,6 +6,7 @@ from django.forms.models import inlineformset_factory
 class HotelImageForm(forms.ModelForm):
     class Meta:
         model = HotelImage
+        extra = 1
         fields = ['image']
         widgets = {
             'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
@@ -15,6 +16,7 @@ class HotelForm(ModelForm):
     class Meta:
         model = Hotel
         exclude = []
+        inlines = [HotelImageForm]
         fields = ['title', 'description', 'price', 'payment', 'wifi', 'parking', 'front_desk', 
         'family_rooms', 'non_smoking_rooms', 'contact_number', 'tags', 'countries']
         widgets = {
@@ -31,5 +33,3 @@ class HotelForm(ModelForm):
             'tags': forms.Select(attrs={'class': "form-control"}),
             'countries': forms.Select(attrs={'class': 'form-control'}),
         }
-        HotelImageFormSet = inlineformset_factory(Hotel, HotelImage,
-                                            form=HotelImageForm, extra=2)

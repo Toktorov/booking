@@ -1,0 +1,22 @@
+{% extends 'base_index.html' %}
+{% block content %}
+{% extends 'base_index.html' %}
+{% block content %}
+{% if user.is_superuser %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <h1>Вы уверены что хотите удалить этот заказ {{ order.name }}?</h1>
+        <button type="submit" class="genric-btn info-border radius">Удалить</button>
+        <a href="{% url 'order_index' %}" class="genric-btn info-border radius">Назад</a>
+    </form>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <h3>У вас не прав на это</h3>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+{% endblock %}

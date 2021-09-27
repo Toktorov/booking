@@ -1,33 +1,5 @@
 {% extends 'index.html' %}
 {% block content %}
-<!-- <div class="popular_destination_area">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section_title text-center mb_70">
-                    <h3>{{country.title }}</h3>
-                    <p>{{country.description }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            {% for hotel in country.hotel_country.all %}
-            <div class="col-lg-4 col-md-6">
-                <div class="single_destination">
-                    <div class="thumb">
-                        {% for image in hotel.hotel_image.all %}
-                        <img src="{{ image.image.url }}" alt="">
-                        {% endfor %}
-                    </div>
-                    <div class="content">
-                        <p class="d-flex align-items-center">{{hotel.title}}<a href="{% url 'hotel_detail' hotel.id %}">{{ hotel.comment.all.count }} отзывов</a> </p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div> -->
 <div class="popular_places_area">
     <div class="container">
         <div class="row justify-content-center">

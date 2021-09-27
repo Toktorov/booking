@@ -1,12 +1,13 @@
-{% extends 'authorization_index.html' %}
+{% extends 'base_index.html' %}
 {% block content %}
+{% if user.is_superuser %}
 <div class="popular_places_area">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section_title text-center mb_70">
                     <h3>Бронирование</h3>
-                    <p>Здесь вы можете увидеть броин</p>
+                    <p>Здесь вы можете увидеть забронированные отели</p>
                 </div>
             </div>
         </div>
@@ -21,10 +22,12 @@
                         <p>Отель: {{ order.order }}</p>
                         <p>Дата прибытия: {{ order.arrival_date }}</p>
                         <p>Дата отбытия: {{ order.departure_date }}</p>
+                        <p>Статус: {{ order.status }}</p>
                         <div class="rating_days d-flex justify-content-between">
-                            <div class="days">
+                            <div>
                                 {% if user.is_superuser %}
-                                <a href="">Удалить</a>
+                                <a class="genric-btn info-border radius" href="{% url 'order_update' order.pk%}">Обновить</a>
+                                <a class="genric-btn info-border radius" href="{% url 'order_delete' order.pk%}">Удалить</a>
                                 {% endif %}  
                             </div>
                         </div>
@@ -35,4 +38,11 @@
         </div>
     </div>
 </div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <h3>У вас не прав на это</h3>
+    </div>
+</div>
+{% endif %}
 {% endblock %}

@@ -48,6 +48,19 @@ class Order(models.Model):
         verbose_name='Паспорт:',
     )
 
+    STATUS_CHOICES = (
+        ('в обработке', 'в обработке'),
+        ('принят', 'принят'),
+        ('действительный', 'действительный'),
+        ('недействительный', 'недействительный'),
+    )
+
+    status = models.CharField(
+        choices= STATUS_CHOICES, max_length=255,
+        verbose_name='Cтатус заказа:',
+        default = 'в обработке'
+    )
+
     def __str__(self):
         return f"{self.name}"
 

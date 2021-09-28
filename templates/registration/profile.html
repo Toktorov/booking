@@ -2,38 +2,40 @@
 {% block content %}
 <div class="popular_places_area">
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb_70">
+                    <h3>{{ country.title }}</h3>
+                    <p>{{ country.description }}</p>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="single_place">
+                    <div class="thumb">
+                        <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">\
+                        {% for image in user.user_image.all %}
+                        <img src="{{ image.image.url }}" alt="">
+                        {% endfor %}
+                    </div>
                     <div class="place_info">
-                        <div class="thumb">
-                            <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
-                            <a href="" class="prise">{{ user.socialaccount_set.all.0.extra_data.name }}</a>
-                        </div>
-                        <a href="">
-                            <h3>{{ user.socialaccount_set.all.0.extra_data.name }}</h3>
-                            <h3>{{ user.username }}</h3>
-                        </a>
-                        <p>Пол: {{ user.gender }}</p>
-                        <p>Возраст: {{ user.age }}</p>
+                        <a href=""></a><h3>{{ user.socialaccount_set.all.0.extra_data.name }}</h3></a>
+                        <a href=""></a><h3>{{ user.username }}</h3></a>
+                        <p>{{ user.age }}</p>
+                        <p>{{ user.gender }}</p>
                         {% if user.is_superuser %}
-                        <p>Номер: {{ user.phone_number }}</p>
-                        {% endif %}
-                        <div class="rating_days d-flex justify-content-between">
-                            <div>
-                                {% if user.is_superuser %}
-                                <a class="genric-btn info-border radius"
-                                    href="">Обновить</a>
-                                <a class="genric-btn info-border radius"
-                                    href="">Удалить</a>
-                                {% endif %}
-                            </div>
+                        <p>{{ user.phone_number }}</p>
+                        <div>
+                            {% if user.is_superuser %}
+                            <a class="genric-btn info-border radius" href="" style = "margin-top: 10px;">Обновить</a>
+                            <a class="genric-btn info-border radius" href="" style = "margin-top: 10px;">Удалить</a>
                         </div>
+                        {% endif %}  
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

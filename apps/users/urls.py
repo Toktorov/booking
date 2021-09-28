@@ -3,5 +3,5 @@ from apps.users.views import UserCreateView, profile
 
 urlpatterns = [
     path('signup/', UserCreateView.as_view(), name='signup'),
-    path('profile/<username>', profile, name='profile'),
+    path('profile/<username>/', profile, name='profile'),
 ]

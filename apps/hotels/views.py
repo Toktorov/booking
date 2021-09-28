@@ -2,15 +2,13 @@ from django.shortcuts import render, redirect
 from apps.hotels.models import Hotel, HotelImage, Like
 from apps.hotels.forms import HotelForm, HotelImageForm
 from apps.comments.models import Comment
-from apps.comments.forms import CommentForm
 from django.forms import inlineformset_factory
-from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 from django.views import generic
 
 
 # Create your views here.
-class HotelsIndexView(ListView):
+class HotelsIndexView(generic.ListView):
     model = Hotel
     template_name = 'hotels/index.html'
     context_object_name = 'hotels'
@@ -35,7 +33,7 @@ def detail_hotel(request, pk):
             print("Error")
     return render(request, 'hotels/detail.html', {"hotel": hotels})
 
-class HotelCreateView(CreateView):
+class HotelCreateView(generic.CreateView):
     model = Hotel
     form_class = HotelForm
     success_url = reverse_lazy('country_index')

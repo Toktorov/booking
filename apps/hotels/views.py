@@ -54,6 +54,18 @@ class HotelDeleteView(generic.DeleteView):
     success_url = reverse_lazy('country_index')
     template_name = 'hotels/delete.html'
 
+def create_hotel(request):
+    form = HotelForm(request.POST, None)
+    HotelImageFormset = inlineformset_factory(Hotel, HotelImage, form=HotelImageForm, extra=1)
+    if form.is_valid():
+        hotel = form.save()
+        formset = HotelImageFormset(request.POST, request.FILES, instance=hotel)
+        if formset.is_valid():
+            formset.save()
+        return redirect('hotel_index')
+    formset = HotelImageFormset()
+    return render(request, 'hotels/create.html', locals())
+
 
 def map(request):
     return render(request, 'map.html')

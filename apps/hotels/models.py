@@ -103,7 +103,7 @@ class Hotel(models.Model):
         verbose_name = "Контактный номер",
     )
 
-    tags = models.ManyToManyField(Tag, related_name='hotel_tags')
+    tags = models.ManyToManyField(Tag, related_name='hotel_tags', blank = True)
 
     created = models.DateTimeField(
         auto_now_add=True

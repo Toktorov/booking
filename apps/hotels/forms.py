@@ -1,7 +1,7 @@
 from django import forms
 from apps.hotels.models import Hotel, HotelImage
 from django.forms import ModelForm
-from django.forms.models import inlineformset_factory
+
 
 class HotelImageForm(forms.ModelForm):
     class Meta:
@@ -16,7 +16,6 @@ class HotelForm(ModelForm):
     class Meta:
         model = Hotel
         exclude = ['image']
-        HotelImageFormSet = inlineformset_factory(Hotel, HotelImage, form=HotelImageForm, extra=1)
         fields = ['title', 'description', 'price', 'payment', 'wifi', 'parking', 'front_desk', 
         'family_rooms', 'non_smoking_rooms', 'contact_number', 'tags', 'countries']
         widgets = {

@@ -62,7 +62,7 @@ def create_hotel(request):
         formset = HotelImageFormset(request.POST, request.FILES, instance=hotel)
         if formset.is_valid():
             formset.save()
-        return redirect('hotel_index')
+        return redirect('country_index')
     formset = HotelImageFormset()
     return render(request, 'hotels/create.html', locals())
 

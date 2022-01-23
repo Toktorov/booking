@@ -1,15 +1,26 @@
 # Booking
-Hotel booking website made with Django framework
+<p align="center">
+  <p align="center">
+    <a href="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" target="_blank">
+      <img src="https://freepikpsd.com/file/2020/03/Free-Hotel-PNG-Clipart.png" alt="JustDjango" height="72">
+    </a>
+  </p>
+  <p align="center">
+    Twitter by Toktorov.
+  </p>
+</p>
+Bookings KG by Toktorov.
+Booking Hotel Service using the Django framework.
 
-What technologies were used in this project:
-- Django
-- JavaScript
-- Bootstrap 3
+To start using this application, you should make migrations and also create a superuser for admin panel
 
-To start a site on Django:
+python manage.py makemigrations
 
-python3 manage.py makemigrations
+python manage.py migrate
 
-python3 manage.py migrate
+python manage.py createsuperuser
 
-python3 manage.py runserver
+python manage.py runserver
+
+if you have a error no such table: users_user
+python3 manage.py migrate --run-syncdb 

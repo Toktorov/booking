@@ -19,3 +19,15 @@ class Comment(models.Model):
         verbose_name = 'Коментарии'
         verbose_name_plural = 'Коментарии'
         ordering = ['-comment_created']
+
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.message
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
+        

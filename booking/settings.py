@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from django.conf import settings
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,6 +59,7 @@ INSTALLED_APPS = [
     'apps.tags',
     'apps.transactions',
     'apps.email_sender',
+    'apps.settings'
 ]
 
 MIDDLEWARE = [
@@ -207,5 +207,3 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 AUTH_USER_MODEL = 'users.User'
-
-django_heroku.settings(locals())

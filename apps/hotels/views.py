@@ -16,7 +16,7 @@ class HotelsIndexView(generic.ListView):
 
 def detail_hotel(request, pk):
     hotels = Hotel.objects.get(pk = pk)
-
+    similar_hotels = Hotel.objects.all().order_by('-countries')
     if 'like' in request.POST:
         try:
             like = Like.objects.get(user=request.user, hotels=hotels)
@@ -28,10 +28,15 @@ def detail_hotel(request, pk):
         try:
             text = request.POST.get('text')
             comment_obj = Comment.objects.create(user=request.user, hotel=hotels, text=text)
-            return redirect('detail', hotel.pk)
+            return redirect('detail', hotels.pk)
         except:
             print("Error")
-    return render(request, 'hotels/detail.html', {"hotel": hotels})
+
+    context = {
+        'similar_hotels' : similar_hotels,
+        'hotel' : hotels,
+    }
+    return render(request, 'hotels/detail.html', context)
 
 class HotelCreateView(generic.CreateView):
     model = Hotel

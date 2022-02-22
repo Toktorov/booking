@@ -1,3 +1,4 @@
+from apps.comments.models import Comment
 from django.shortcuts import render, redirect
 from apps.countries.models import Country, CountryImage
 from apps.countries.forms import CountryForm, CountryImageForm
@@ -7,19 +8,14 @@ from django.views import generic
 from django.urls import reverse_lazy
 
 # Create your views here.
-class CountriesIndexView(generic.ListView):
-    model = Country
-    template_name = 'countries/index.html'
-    context_object_name = 'countries'
-
-    def get_queryset(self):
-        queryset = Country.objects.all()
-        qury_obj = self.request.GET.get('words')
-        if qury_obj:
-            queryset = Country.objects.filter(
-                Q(title__icontains=qury_obj)
-            )
-        return queryset
+def index(request):
+    country = Country.objects.all()
+    comment = Comment.objects.all().order_by('-comment_created',)[:5]
+    context = {
+        'countries' : country,
+        'comments' : comment,
+    }
+    return render(request, 'countries/index.html', context)
 
 class CountriesDetailView(generic.DetailView):
     model = Country

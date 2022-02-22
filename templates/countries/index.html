@@ -65,4 +65,35 @@
         </div>
     </div>
 </div>
+<div class="testimonial_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="testmonial_active owl-carousel">
+                    {% for comment in comments %}
+                    <div class="single_carousel">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="single_testmonial text-center">
+                                    <div class="author_thumb">
+                                        {% if user.profile %}
+                                        <img src="{{ user.profile.url }}" alt="">
+                                        {% else %}
+                                        <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg" height="150px" style = "border-radius: 100%;" alt="">
+                                        {% endif %}
+                                    </div>
+                                    <p>{{ comment.text }}</p>
+                                    <div class="testmonial_author">
+                                        <h3>{{ user.username }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

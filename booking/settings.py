@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'apps.tags',
     'apps.transactions',
     'apps.email_sender',
-    'apps.settings'
+    'apps.settings',
 ]
 
 MIDDLEWARE = [

@@ -4,7 +4,7 @@
 <div class="container">
     <form method="post">
         {% csrf_token %}
-        <h1>Вы уверены что хотите удалить эту страну {{ country.title }}?</h1>
+        <h1>Вы уверены что хотите удалить этот город {{ country.title }}?</h1>
         <button type="submit" class="genric-btn info-border radius">Удалить</button>
         <a href="{% url 'country_index' %}" class="genric-btn info-border radius">Назад</a>
     </form>

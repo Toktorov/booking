@@ -6,7 +6,7 @@
     </a>
   </p>
   <p align="center">
-    Twitter by Toktorov.
+    Booking by Toktorov.
   </p>
 </p>
 Bookings KG by Toktorov.

@@ -20,8 +20,8 @@ class Country(models.Model):
         return f"{self.title}"
 
     class Meta:
-        verbose_name = 'Страны'
-        verbose_name_plural = 'Страны'
+        verbose_name = 'Город'
+        verbose_name_plural = 'Города'
         ordering = ('-id',)
 
 class CountryImage(models.Model):
@@ -36,6 +36,9 @@ class CountryImage(models.Model):
         verbose_name='Фото отеля'
     )
 
+    class Meta:
+        verbose_name = "Фото города"
+        verbose_name_plural = "Фото городов"
 
 def slag_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
